@@ -19,6 +19,6 @@
 >> + [FILE] step02.php : [step02] Output sample data from DB
 >> + [FILE] step04.php : [step04] Make DataGrid Table Using AJAX
 >> + [FILE] step08.php : [step08] Draw Graph Using d3.js
->> + [FILE] totat.tar : 전체 압축파일
+>> + [FILE] totar.tar : 전체 압축파일
 
 
