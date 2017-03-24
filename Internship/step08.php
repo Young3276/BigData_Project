@@ -17,39 +17,15 @@
 		
 	</head>
 	<body>
-		<nav class="nav-extended">
-			<div class="nav-wrapper">
-				<a href="./index.php" class="brand-logo">NBP INTERNSHIP</a>
-				<a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-				<ul id="nav-mobile" class="right hide-on-med-and-down">
-					<li><a href="./step02.php">STEP02</a></li>
-					<li><a href="./step04.php">STEP04</a></li>
-					<li><a href="./step08.php">STEP08</a></li>
-					<li><a href="./etc.php">ETC</a></li>
-				</ul>
-				<ul class="side-nav" id="mobile-demo">
-					<li><a href="./step02.php">STEP02</a></li>
-					<li><a href="./step04.php">STEP04</a></li>
-					<li><a href="./step08.php">STEP08</a></li>
-					<li><a href="./etc.php">ETC</a></li>
-				</ul>
-			</div>
-		</nav>
+		<?php include 'navbar.php'?>
 		<center>
 			<h2> Young's Assignment </h2>
 			<h4> Column Gragh By D3.js</h4>
 			<h6> 6개월간 각 국의 환율변동 평균</h6>
 			<svg id="myGraph"></svg>
 		</center>
-
-		<footer class="page-footer">
-			<div class="footer-copyright">
-				<div class="container">
-					© 2017 Copyright Young
-					<a class="grey-text text-lighten-4 right" href="#!">More Links</a>
-				</div>
-			</div>
-		</footer>
+	
+		<?php include 'footer.php'?>
                 <script type="text/javascript">
 	                $(document).ready(function(){
 				$(".button-collapse").sideNav();
