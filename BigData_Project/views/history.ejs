@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/><!--website is optimized for mobile-->
+    <title>ToNight</title>
+    <!--Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- materialize.css, css -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+    <link type='text/css' rel='stylesheet' href="css/style1.css"/>
+    <script src="/js/jquery-1.11.1.min.js"></script>
+    <!--scrollbar-->
+    <script type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+
+    <script>
+        $(document).ready(function(){
+          $("#tab2").click(function(){
+            console.log("you click tab2");
+            $.ajax({
+              type:"GET",
+              url:"/history/pay",
+
+              success: function(data){
+                var parseData = JSON.parse(data);
+                var inputData = document.getElementById("tt2");
+                var ttab2 ="";
+                for(var i=0;i<parseData.length;i++)
+                {
+                  ttab2+="<tr><td class='center-align'>"+(i+1)+"</td>";
+                  ttab2+="<td class='center-align'>"+parseData[i].c_clubName+"</td>";
+                  ttab2+="<td class='center-align'>"+parseData[i].pc_name+"</td>";
+                  ttab2+="<td class='center-align'>"+parseData[i].cp_price+"</td>";
+                  ttab2+="<td class='center-align'>"+parseData[i].p_date+"</td></tr>";
+                }
+                inputData.innerHTML =ttab2;
+
+              },
+              error:function(jqXHR,textStatus,err){
+                alert('text status :' + textStatus+', err :'+err);
+              }
+            });
+          });
+          $("#tab3").click(function(){
+            console.log("you click tab2");
+            $.ajax({
+              type:"GET",
+              url:"/history/charge",
+
+              success: function(data){
+                var parseData = JSON.parse(data);
+                var inputData = document.getElementById("tt3");
+                var ttab3 ="";
+                for(var i=0;i<parseData.length;i++)
+                {
+                  ttab3+="<tr><td class='center-align'>"+(i+1)+"</td>";
+                  ttab3+="<td class='center-align'>"+parseData[i].mc_charge+"</td>";
+                  ttab3+="<td class='center-align'>"+parseData[i].time+"</td></tr>";
+                }
+                inputData.innerHTML =ttab3;
+
+              },
+              error:function(jqXHR,textStatus,err){
+                alert('text status :' + textStatus+', err :'+err);
+              }
+            });
+          });
+
+        });
+    </script>
+
+  </head>
+  <body>
+    <!--body div-->
+    <div id ="body">
+      <!--navbar-fixed-->
+      <div class ="navbar-fixed">
+        <nav class="" role="navigation">
+          <div class ="nav-wrapper grey darken-4">
+            <!--<a href="#" class="brand-logo">&nbsp;&nbsp;&nbsp;&nbsp;ToNight</a>logo넣기-->
+            <a href="/" class="brand-logo"><img class="responsive-img" src="image/tonight.png"></a>
+                <ul id ="" class="right hide-on-med-and-down">
+                  <li><img class="selectprofile circle responsive-img" href ="#profile" src="<%- profileImg %>"/></li>
+                  <li><a class="" href="/main">Main</a></li>
+                  <li><a class="" href="/qrcode">QRcode</a></li>
+                  <li><a class="" href="/exit">Exit</a></li>
+                  <li><a class="" href="/charge">Charge</a></li>
+                  <li><a class=" link link--yaku scroll" href="/history">History</a></li>
+                  <li><a class ="" href="/logout">Logout</a></li>
+                </ul>
+                <a href="#" data-activates="slide-out" class="button-collapse right"><i class="material-icons">menu</i></a>
+          </div><!--//nav-wrapper-->
+        </nav>
+      </div>
+      <!--//navbar-fixed-->
+      <!--right slide-bar-->
+      <div>
+        <ul id="slide-out"class="side-nav blue-grey darken-4 right-aligned" >
+          <li class="brown darken-4 C_userViewli">
+            <div class="userView">
+              <img class="selectprofile circle center-align" href ="#profile" src="<%- profileImg %>"/>
+              <span class="email customemail"> <%- sessId %></span>
+              <a class="customlogout" href ="/logout">logout</a>
+            </div>
+          </li>
+          <li><a class="" href="/main">Main</a></li>
+          <li><a class="" href="/qrcode">QRcode</a></li>
+          <li><a class="" href="/exit">Exit</a></li>
+          <li><a class="" href="/charge">Charge</a></li>
+          <li><a class="" href="/history">History</a></li>
+        </ul>
+      </div>
+      <!--//right slide-bar-->
+      <!-- Modal profile Structure -->
+      <form action="/uploadImg" method="post" enctype="multipart/form-data">
+        <div id="profile" class="modal">
+          <div class="modal-content">
+            <h3>Profile Upload</h3>
+            <div class="file-field input-field">
+                <div class="btn">
+                  <span>File</span>
+                  <input type="file">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat" value="변경하기">
+          </div>
+        </div>
+      </form>
+      <!-- Modal profile Structure -->
+      <div id ="main_contents">
+        <div class="travel-section">
+          <div class="facts">
+            <div class="sap_tabs">
+              <div id="horizontalTab" style="display: block; width: 100%; margin: 0px;">
+                <div class="tab">
+                  <ul>
+                    <li id="tab1"class="resp-tab-item" aria-controls="tab_item-0" role="tab"><span>입장내역</span></li>
+                    <li id="tab2" class="resp-tab-item" aria-controls="tab_item-1" role="tab"><span>결제내역</span></li>
+                    <li id="tab3" class="resp-tab-item" aria-controls="tab_item-2" role="tab"><span>충전내역</span></li>
+                  </ul>
+                </div>
+                <div class="tab-1 resp-tab-content" aria-labelledby="tab_item-0">
+                  <div class="content-form">
+                    <div class="content">
+                      <br/><br/><br/>
+                      <h4>ba6020@naver.com 입장내역</h4>
+                      <table class="text blue-grey darken-4">
+                        <thead>
+                          <tr>
+                            <th data-field="No" class="center-align">No</th>
+                            <th data-field="Club" class="center-align">Club</th>
+                            <th data-field="Date" class="center-align">Date</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <%
+                            if(typeof enter =='undefined')
+                            {
+                                var enterValue = 0;
+                            }
+                            else{
+
+                              for(var i =0;i<enter.length;i++)
+                              {
+                                var enterValue = enter[i];
+                                var cname = enterValue.c_clubName;
+                                var cdate = enterValue.h_date;
+                                %>
+
+                                <tr>
+                                  <td class="center-align"><%=i+1%></td>
+                                  <td class="center-align"><%=cname%></td>
+                                  <td class="center-align"><%=cdate%></td>
+                                </tr>
+                                <%
+                              }
+
+
+
+                            }
+                          %>
+                          <!-- <tr>
+                            <td class="center-align">1</td>
+                            <td class="center-align">BuTTON</td>
+                            <td class="center-align">3:00am</td>
+                          </tr>
+                          <tr>
+                            <td class="center-align">2</td>
+                            <td class="center-align">BuTTON</td>
+                            <td class="center-align">3:00am</td>
+                          </tr> -->
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-2 resp-tab-content" aria-labelledby="tab_item-1">
+                  <div class="content-form">
+                    <div class="content">
+                      <br/><br/><br/>
+                        <h4>ba6020@naver.com 결제내역</h4>
+                          <table class="text blue-grey darken-4">
+                            <thead>
+                              <tr>
+                                <th data-field="No" class="center-align">No</th>
+                                <th data-field="Club" class="center-align">Club</th>
+                                <th data-field="Prod" class="center-align">Product</th>
+                                <th data-field="Price" class="center-align">Price</th>
+                                <th data-field="Date" class="center-align">Date</th>
+                              </tr>
+                            </thead>
+
+                            <!-- start tab2 data -->
+                            <tbody id ="tt2">
+
+
+                            </tbody>
+                            <!-- end tab2 data -->
+                          </table>
+                    </div>
+                  </div>
+                </div>
+                <div class="tab-3 resp-tab-content" aria-labelledby="tab_item-3">
+                  <div class="content-form">
+                    <div class="content">
+                      <br/><br/><br/>
+                      <h4>ba6020@naver.com 충전내역</h4>
+                      <table class="text blue-grey darken-4">
+                      <thead>
+                        <tr>
+                          <th data-field="No" class="center-align">No</th>
+                          <th data-field="Charge" class="center-align">Charge</th>
+                          <th data-field="Date" class="center-align">Date</th>
+                        </tr>
+                      </thead>
+                      <tbody id="tt3">
+                        <!-- <tr>
+                          <td class="center-align">1</td>
+                          <td class="center-align">\120000</td>
+                          <td class="center-align">4:30am</td>
+                        </tr>
+                        <tr>
+                          <td class="center-align">2</td>
+                          <td class="center-align">\120000</td>
+                          <td class="center-align">3:00am</td>
+                        </tr> -->
+                      </tbody>
+                    </table>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--JQuery-->
+      <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script><!--meterial js -->
+      <script type="text/javascript" src="js/jquery.nicescroll.js"></script><!--scrollbar-->
+      <script type="text/javascript" src="js/all.js"></script>
+      <!-- only main -->
+      <script type="text/javascript" src="js/masonry.pkgd.min.js"></script><!--masonry js -->
+      <script type="text/javascript" src="js/main.js"></script>
+      <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script><!--imageloaded js-->
+      <!--only history-->
+      <script src="js/easyResponsiveTabs.js" type="text/javascript"></script>
+      <script type="text/javascript">
+        $(document).ready(function () {
+          $('#horizontalTab').easyResponsiveTabs({
+            type: 'default', //Types: default, vertical, accordion
+            width: 'auto', //auto or any width like 600px
+            fit: true   // 100% fit in a container
+          });
+        });
+      </script>
+    </div><!--//body div-->
+  </body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/><!--website is optimized for mobile-->
+    <title>ToNight</title>
+    <!--Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- materialize.css, css -->
+    <link type="text/css" rel="stylesheet" href="css/materialize.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+    <!--scrollbar-->
+    <script type="application/x-javascript"> addEventListener("load", function() {setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+  </head>
+  <body style="background-color:#122e42">
+    <!--body div-->
+    <div id ="body">
+      <!--navbar-fixed-->
+      <div class ="navbar-fixed">
+        <nav class="" role="navigation">
+          <div class ="nav-wrapper grey darken-4">
+            <!--<a href="#" class="brand-logo">&nbsp;&nbsp;&nbsp;&nbsp;ToNight</a>logo넣기-->
+            <a href="/" class="brand-logo"><img class="responsive-img" src="image/tonight.png"></a>
+                <ul id ="" class="right hide-on-med-and-down">
+                  <li><img class="selectprofile circle responsive-img" href ="#profile" src="<%- profileImg %>"/></li>
+                  <li><a class="" href="/main">Main</a></li>
+                  <li><a class="" href="/qrcode">QRcode</a></li>
+                  <li><a class="" href="/exit">Exit</a></li>
+                  <li><a class="" href="/charge">Charge</a></li>
+                  <li><a class=" link link--yaku scroll" href="/history">History</a></li>
+                  <li><a class ="" href="/logout">Logout</a></li>
+                </ul>
+                <a href="#" data-activates="slide-out" class="button-collapse right"><i class="material-icons">menu</i></a>
+          </div><!--//nav-wrapper-->
+        </nav>
+      </div>
+      <!--//navbar-fixed-->
+      <!--right slide-bar-->
+      <div>
+        <ul id="slide-out"class="side-nav blue-grey darken-4 right-aligned" >
+          <li class="brown darken-4 C_userViewli">
+            <div class="userView">
+              <img class="selectprofile circle center-align" href ="#profile" src="<%- profileImg %>"/>
+              <span class="email customemail"> <%- sessId %></span>
+              <a class="customlogout" href ="/logout">logout</a>
+            </div>
+          </li>
+          <li><a class="" href="/main">Main</a></li>
+          <li><a class="" href="/qrcode">QRcode</a></li>
+          <li><a class="" href="/exit">Exit</a></li>
+          <li><a class="" href="/charge">Charge</a></li>
+          <li><a class="" href="/history">History</a></li>
+        </ul>
+      </div>
+      <!--//right slide-bar-->
+      <!-- Modal profile Structure -->
+      <form action="/uploadImg" method="post" enctype="multipart/form-data">
+        <div id="profile" class="modal">
+          <div class="modal-content">
+            <h3>Profile Upload</h3>
+            <div class="file-field input-field">
+                <div class="btn">
+                  <span>File</span>
+                  <input type="file" name="userphoto">
+                </div>
+                <div class="file-path-wrapper">
+                  <input class="file-path validate" type="text">
+                </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input type="submit" class=" modal-action modal-close waves-effect waves-green btn-flat" value="변경하기">
+          </div>
+        </div>
+      </form>
+      <!-- Modal profile Structure -->
+      <!--filter nav-->
+      <div id ="filtercontainer" class ="filtercontainer">
+        <div class="navbar-fixed">
+          <nav class="grey darken-3">
+            <div class="nav-wrapper">
+              <ul class="right">
+                <li><a class="theme-modal-trigger" href="#theme">Theme</a></li>
+                <li><a class="area-modal-trigger" href="#area">Area</a></li>
+              </ul>
+            </div>
+          </nav>
+        </div>
+      </div>
+      <!--//filter nav-->
+      <!--Theme filter modal -->
+      <form name="theme">
+        <div id="theme" class="modal bottom-sheet">
+          <div class="modal-content">
+            <h4>Select Theme</h4>
+            <br/>
+            <p>
+              <input name="theme" type="radio" id="edm" value="EDM"/>
+              <label for="edm">EDM</label>
+            </p>
+            <p>
+              <input name="theme" type="radio" id="hiphop" value="HIPHOP"/>
+              <label for="hiphop">HIPHOP</label>
+            </p>
+            <p>
+              <input name="theme" type="radio" id="lounge" value="LOUNGE" />
+              <label for="lounge">LOUNGE</label>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <a id ="themeBtn" class="modal-action modal-close waves-effect waves-green btn-flat">SELECT</a>
+          </div>
+        </div>
+      </form>
+      <!--//Theme filter modal-->
+      <!--Area filter modal -->
+      <form action="/area" method="post">
+        <div id="area" class="modal bottom-sheet">
+          <div class="modal-content">
+            <h4>Select Area</h4>
+            <br/>
+            <p>
+              <input name="area" type="radio" id="gangnam" value="Gangnam" />
+              <label for="gangnam">Gangnam</label>
+            </p>
+            <p>
+              <input name="area" type="radio" id="honguniv" value="HongUniv"/>
+              <label for="honguniv">HongUniv</label>
+            </p>
+            <p>
+              <input name="area" type="radio" id="itaewon" value="Itaewon" />
+              <label for="itaewon">Itaewon</label>
+            </p>
+            <p>
+              <input name="area" type="radio" id="pusan" value="Pusan" />
+              <label for="pusan">Pusan</label>
+            </p>
+            <p>
+              <input name="area" type="radio" id="incheon" value="Incheon"/>
+              <label for="incheon">Incheon</label>
+            </p>
+            <p>
+              <input name="area" type="radio" id="gwangju" value="Gwangju" />
+              <label for="gwangju">Gwangju</label>
+            </p>
+          </div>
+          <div class="modal-footer">
+            <a id="areaBtn" class=" modal-action modal-close waves-effect waves-green btn-flat">SELECT</a>
+          </div>
+        </div>
+      </form>
+      <!--//Area filter modal-->
+      <div id ="main_contents">
+        <div id ="gallerycontainer">
+          <div class="grid">
+            <% var i =0; %>
+            <% club.forEach(function(club){ %>
+                <div id="g<%=i+1%>" class="grid-item <%- club.d_districtName %> <%- club.t_themeName %>">
+                  <img class="clubimg" alt="<%- club.c_num %>" src="<%- club.path %>">
+                  <div class ="clubInfo">
+                    <p class = "c_clubName" style ="display:none;" > <%- club.c_clubName %> </p>
+                  </div>
+                </div>
+            <% i++;}); %>
+          </div>
+        </div>
+      </div>
+      <!--JQuery-->
+      <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+      <script type="text/javascript" src="js/materialize.min.js"></script><!--meterial js -->
+      <script type="text/javascript" src="js/jquery.nicescroll.js"></script><!--scrollbar-->
+      <script type="text/javascript" src="js/all.js"></script>
+      <!-- only main -->
+      <script type="text/javascript" src="js/isotope.pkgd.min.js"></script>
+      <script type="text/javascript" src="js/main.js"></script>
+      <script type="text/javascript" src="js/imagesloaded.pkgd.min.js"></script><!--imageloaded js-->
+
+
+    </div><!--//body div-->
+  </body>
+</html>

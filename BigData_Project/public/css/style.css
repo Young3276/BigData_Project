@@ -1,0 +1,94 @@
+h4, h5, h6,
+h1, h2, h3 {
+	margin: 0;
+}
+ul, ol, li{margin: 0; padding: 0;}
+p {margin: 0;padding: 0;}
+
+body{
+  font-family: 'Open Sans', sans-serif;
+  margin:0;
+  padding:0;
+}
+body p{
+  font-family: 'Open Sans', sans-serif;
+}
+
+/*-------- fixed filter 설정 --------------*/
+#filtercontainer{
+	background-color:#000;
+}
+#filtercontainer .navbar-fixed {
+	position: relative;
+	height:30px;
+	z-index: 998;
+}
+#filtercontainer .navbar-fixed nav {
+  position: fixed;
+	height:30px;
+	line-height:30px;
+}
+#filtercontainer .navbar-fixed .grey.darken-4 {
+  background-color: #424242 !important;
+	opacitiy:0.7;
+}
+@media only screen and (min-width: 601px) {
+  #filtercontainer .navbar-fixed nav, #filtercontainer .navbar-fixed nav .nav-wrapper i, #filtercontainer .navbar-fixed nav a.button-collapse, #filtercontainer .navbar-fixed nav a.button-collapse i {
+    height: 30px;
+    line-height: 30px;
+  }
+  #filtercontainer .navbar-fixed {
+    height: 30px;
+  }
+}
+
+#filtercontainer .navbar-fixed nav ul a:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+	text-color:black;
+}
+/*----------side-nav 설정-----------*/
+.C_userViewli{
+	padding-top:20px;
+	padding-bottom:20px;
+}
+.customemail{
+	color:white;
+}
+.side-nav .customlogout{
+	color:#ccb5b5;
+}
+/* ------- gallery 설정 (masonry) ------- */
+#gallerycontainer {
+	float: none;
+	margin: auto;
+	background-color: #122e42;
+}
+.grid {
+	max-width:900px;
+	margin:0 auto;
+}
+@media only screen and (max-width:1005px){
+	.grid{
+			max-width:600px;
+			margin:0 auto;
+	}
+}
+@media only screen and (max-width:658px){
+	.grid{
+			max-width:300px;
+			margin:0 auto;
+	}
+}
+.grid:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+.grid-item {
+  width: 300px;
+  /*height: 300px;*/
+  float: left;
+}
+.grid-item img{
+	width:inherit;
+}
