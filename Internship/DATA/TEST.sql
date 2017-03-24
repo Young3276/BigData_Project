@@ -1,0 +1,6 @@
+-- CREATE DATABASE
+CREATE DATABASE `TEST` DEFAULT CHARACTER SET UTF8;
+USE TEST;
+CREATE TABLE `Test`(`id` int(10) NOT NULL, `msg` varchar(100) NOT NULL, PRIMARY KEY(`id`));
+INSERT INTO Test(id, msg) VALUES(1, "Hello, World!");
+INSERT INTO Test(id, msg) VALUES(2, "저는 오동영입니다!");
